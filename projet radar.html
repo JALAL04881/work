@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianScan - Surveillance</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input { padding: 5px; margin: 10px; width: 60px; }
+        button { padding: 10px; background-color: blue; color: white; border: none; cursor: pointer; }
+        table { width: 60%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px  #000000; padding: 10px; text-align: center; }
+        th{ background-color: rgba(5,0,255,0.7); color: white; }
+    </style>
+</head>
+<body>
+    <h1>GuardianScan - Surveillance</h1>
+
+    <h2>Paramètres du Scan</h2>
+    <label>Angle de balayage (°) :</label>
+    <input type="number" id="angleMax" value="180"><br>
+
+    <label>Seuil de distance (cm) :</label>
+    <input type="number" id="distanceMax" value="40"><br>
+
+    <button onclick="sendData()">Mettre à jour</button>
+
+    <h2>Objets détectés</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Angle (°)</th>
+                <th>Distance (cm)</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable">
+        </tbody>
+    </table>
+
+    <script>
+        function sendData() {
+            let angleMax = document.getElementById("angleMax").value;
+            let distanceMax = document.getElementById("distanceMax").value;
+
+            fetch("/update?angle=" + angleMax + "&distance=" + distanceMax)
+                .then(response => response.text())
+                .then(data => alert("Paramètres mis à jour !"));
+        }
+
+        function fetchData() {
+            fetch("/data")
+                .then(response => response.json())
+                .then(data => {
+                    let table = document.getElementById("dataTable");
+                    table.innerHTML = ""; // Efface les anciennes données
+                    data.forEach(obj => {
+                        let row = "<tr><td>" + obj.angle + "</td><td>" + obj.distance + "</td></tr>";
+                        table.innerHTML += row;
+                    });
+                });
+        }
+
+        setInterval(fetchData, 1000); // Mise à jour toutes les 1s
+    </script>
+</body>
+</html>

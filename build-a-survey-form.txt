@@ -1,0 +1,42 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 id="title">remplissage</h1>
+    <p id="description">infos personnelles</p>
+    <form id="survey-form">
+      <input id="name" type="text" placeholder="name" required>
+      <input id="email" type="email" placeholder="email" required>
+      <input id="number" type="number" placeholder="number" min="1" max="10">
+      <label id="name-label">name</label>
+      <label id="email-label">email</label>
+      <label id="number-label">number</label>
+      <select id="dropdown">
+         <option value="option1">Option 1</option>
+         <option value="option2">Option 2</option>
+      </select>
+      <input type="radio" name="btn" value="radbtn">
+      <input type="radio" name="btn" value="radbtn">
+      <input type="checkbox" value="btnbox">
+      <input type="checkbox" value="btnbox">
+      <textarea></textarea>
+      <button id="submit" typp="submit"></button>
+
+
+    </form>
+  </body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+

@@ -1,0 +1,19 @@
+body{
+    background-color: red;
+    background-color: aliceblue;
+}
+h4{
+    color: blue;
+}
+input[type="text"]{
+    color: brown;
+}
+input[type="text1"]{
+    color: brown;
+    background-color: blue;
+    text-align: center;
+}
+h4{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
